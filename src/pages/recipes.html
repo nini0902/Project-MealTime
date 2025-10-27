@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食譜列表 - 食材配方系統</title>
+    <link rel="stylesheet" href="../../src/css/theme.css">
+    <link rel="stylesheet" href="../../src/css/layout.css">
+    <link rel="stylesheet" href="../../src/css/recipes.css">
+</head>
+<body class="page">
+    <!-- 導航列 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="../../index.html" class="navbar-brand">
+                    <div class="navbar-logo">🍳</div>
+                    <span>食材配方</span>
+                </a>
+                <ul class="navbar-nav">
+                    <li><a href="../../index.html">首頁</a></li>
+                    <li><a href="recipes.html" style="color: rgba(255,255,255,0.7); font-weight: 600;">食譜</a></li>
+                    <li><a href="matcher.html">食材配對</a></li>
+                    <li><a href="add-recipe.html">新增食譜</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 頁面內容 -->
+    <main class="page-content">
+        <!-- 頁面頭部 -->
+        <section class="page-header">
+            <div class="container">
+                <h1>📚 所有食譜</h1>
+                <p>瀏覽我們的完整食譜庫</p>
+            </div>
+        </section>
+
+        <!-- 主要內容 -->
+        <section class="container">
+            <div class="recipes-header">
+                <div class="recipes-search">
+                    <input type="text" placeholder="搜尋食譜..." id="recipeSearch" class="search-input">
+                </div>
+                <div class="recipes-filter">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">所有分類</option>
+                        <option value="中式/快炒">中式/快炒</option>
+                        <option value="中式/炒飯">中式/炒飯</option>
+                        <option value="湯品">湯品</option>
+                    </select>
+                    <select id="difficultyFilter" class="filter-select">
+                        <option value="">所有難度</option>
+                        <option value="簡單">簡單</option>
+                        <option value="中等">中等</option>
+                        <option value="困難">困難</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="recipes-grid" id="recipesGrid">
+                <!-- 動態生成 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>食材配方</h4>
+                    <ul>
+                        <li><a href="../../index.html">首頁</a></li>
+                        <li><a href="recipes.html">所有食譜</a></li>
+                        <li><a href="matcher.html">食材配對</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>使用指南</h4>
+                    <ul>
+                        <li><a href="#">如何開始</a></li>
+                        <li><a href="#">新增食譜</a></li>
+                        <li><a href="#">常見問題</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>相關資訊</h4>
+                    <ul>
+                        <li><a href="#">關於我們</a></li>
+                        <li><a href="#">聯繫我們</a></li>
+                        <li><a href="#">隱私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 食材配方系統。所有權利保留。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../src/js/recipes.js"></script>
+</body>
+</html>

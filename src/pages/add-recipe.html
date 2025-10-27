@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增食譜 - 食材配方系統</title>
+    <link rel="stylesheet" href="../../src/css/theme.css">
+    <link rel="stylesheet" href="../../src/css/layout.css">
+    <link rel="stylesheet" href="../../src/css/add-recipe.css">
+</head>
+<body class="page">
+    <!-- 導航列 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="../../index.html" class="navbar-brand">
+                    <div class="navbar-logo">🍳</div>
+                    <span>食材配方</span>
+                </a>
+                <ul class="navbar-nav">
+                    <li><a href="../../index.html">首頁</a></li>
+                    <li><a href="recipes.html">食譜</a></li>
+                    <li><a href="matcher.html">食材配對</a></li>
+                    <li><a href="add-recipe.html" style="color: rgba(255,255,255,0.7); font-weight: 600;">新增食譜</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 頁面內容 -->
+    <main class="page-content">
+        <!-- 頁面頭部 -->
+        <section class="page-header">
+            <div class="container">
+                <h1>➕ 新增食譜</h1>
+                <p>分享您的家常菜，建立個人食譜庫</p>
+            </div>
+        </section>
+
+        <!-- 主要內容 -->
+        <section class="container-sm">
+            <form id="recipeForm" class="recipe-form">
+                <!-- 基本資訊 -->
+                <section class="form-section">
+                    <h2 class="section-title">1️⃣ 基本資訊</h2>
+                    
+                    <div class="form-group">
+                        <label for="recipeName" class="form-required">食譜名稱</label>
+                        <input type="text" id="recipeName" name="recipeName" placeholder="例如：番茄炒雞蛋" required>
+                        <small>3-100 個字元</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipeCategory" class="form-required">分類</label>
+                            <select id="recipeCategory" name="recipeCategory" required>
+                                <option value="">請選擇分類</option>
+                                <option value="中式/快炒">中式/快炒</option>
+                                <option value="中式/炒飯">中式/炒飯</option>
+                                <option value="湯品">湯品</option>
+                                <option value="西式">西式</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipeDifficulty" class="form-required">難度等級</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="recipeDifficulty" value="簡單"> 簡單</label>
+                                <label><input type="radio" name="recipeDifficulty" value="中等"> 中等</label>
+                                <label><input type="radio" name="recipeDifficulty" value="困難"> 困難</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipeTips">小貼士（選填）</label>
+                        <textarea id="recipeTips" name="recipeTips" placeholder="分享您的烹飪小秘訣..."></textarea>
+                    </div>
+                </section>
+
+                <!-- 烹飪資訊 -->
+                <section class="form-section">
+                    <h2 class="section-title">2️⃣ 烹飪資訊</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipeTime" class="form-required">烹飪時間</label>
+                            <div class="input-append">
+                                <input type="number" id="recipeTime" name="recipeTime" min="1" max="999" placeholder="15" required>
+                                <span class="append-text">分鐘</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipeServings" class="form-required">份量</label>
+                            <div class="input-append">
+                                <input type="number" id="recipeServings" name="recipeServings" min="1" max="20" placeholder="2" required>
+                                <span class="append-text">人份</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 食材清單 -->
+                <section class="form-section">
+                    <h2 class="section-title">3️⃣ 食材清單</h2>
+                    <p class="section-hint">至少需要 1 個食材</p>
+                    
+                    <div class="ingredients-container" id="ingredientsContainer">
+                        <!-- 動態生成 -->
+                    </div>
+
+                    <button type="button" class="btn btn-outline" id="addIngredientBtn">+ 新增食材</button>
+                </section>
+
+                <!-- 烹飪步驟 -->
+                <section class="form-section">
+                    <h2 class="section-title">4️⃣ 烹飪步驟</h2>
+                    <p class="section-hint">至少需要 1 個步驟</p>
+                    
+                    <div class="steps-container" id="stepsContainer">
+                        <!-- 動態生成 -->
+                    </div>
+
+                    <button type="button" class="btn btn-outline" id="addStepBtn">+ 新增步驟</button>
+                </section>
+
+                <!-- 操作按鈕 -->
+                <section class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">保存食譜</button>
+                    <button type="reset" class="btn btn-outline btn-lg">清空表單</button>
+                    <a href="recipes.html" class="btn btn-outline btn-lg">取消</a>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>食材配方</h4>
+                    <ul>
+                        <li><a href="../../index.html">首頁</a></li>
+                        <li><a href="recipes.html">所有食譜</a></li>
+                        <li><a href="matcher.html">食材配對</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>使用指南</h4>
+                    <ul>
+                        <li><a href="#">如何開始</a></li>
+                        <li><a href="#">新增食譜</a></li>
+                        <li><a href="#">常見問題</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>相關資訊</h4>
+                    <ul>
+                        <li><a href="#">關於我們</a></li>
+                        <li><a href="#">聯繫我們</a></li>
+                        <li><a href="#">隱私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 食材配方系統。所有權利保留。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../src/js/add-recipe.js"></script>
+</body>
+</html>

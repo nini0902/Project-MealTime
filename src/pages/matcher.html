@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食材配對 - 食材配方系統</title>
+    <link rel="stylesheet" href="../../src/css/theme.css">
+    <link rel="stylesheet" href="../../src/css/layout.css">
+    <link rel="stylesheet" href="../../src/css/matcher.css">
+</head>
+<body class="page">
+    <!-- 導航列 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="../../index.html" class="navbar-brand">
+                    <div class="navbar-logo">🍳</div>
+                    <span>食材配方</span>
+                </a>
+                <ul class="navbar-nav">
+                    <li><a href="../../index.html">首頁</a></li>
+                    <li><a href="recipes.html">食譜</a></li>
+                    <li><a href="matcher.html" style="color: rgba(255,255,255,0.7); font-weight: 600;">食材配對</a></li>
+                    <li><a href="add-recipe.html">新增食譜</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 頁面內容 -->
+    <main class="page-content">
+        <!-- 頁面頭部 -->
+        <section class="page-header">
+            <div class="container">
+                <h1>🎯 食材配對</h1>
+                <p>選擇您家中現有的食材，我們會為您推薦最合適的食譜</p>
+            </div>
+        </section>
+
+        <!-- 主要內容 -->
+        <section class="container">
+            <div class="matcher-layout">
+                <!-- 左側：食材選擇面板 -->
+                <aside class="ingredient-panel">
+                    <div class="panel-header">
+                        <h3>🥬 選擇食材</h3>
+                        <button class="btn btn-sm btn-outline" id="clearAllBtn">清空全部</button>
+                    </div>
+
+                    <div class="ingredient-search">
+                        <input 
+                            type="text" 
+                            id="ingredientSearch" 
+                            placeholder="搜尋食材..."
+                            class="ingredient-search-input"
+                        >
+                    </div>
+
+                    <div class="ingredient-categories" id="ingredientCategories">
+                        <!-- 動態生成 -->
+                    </div>
+
+                    <div class="selected-count">
+                        已選擇 <strong id="selectedCount">0</strong> 種食材
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="searchRecipesBtn">
+                        搜尋食譜
+                    </button>
+                </aside>
+
+                <!-- 右側：結果面板 -->
+                <main class="results-panel">
+                    <!-- 初始狀態 -->
+                    <div class="results-empty" id="emptyState">
+                        <div class="empty-icon">🔍</div>
+                        <h3>還沒有選擇食材</h3>
+                        <p>請在左側選擇您家中現有的食材，然後點擊「搜尋食譜」按鈕</p>
+                    </div>
+
+                    <!-- 搜尋結果 -->
+                    <div class="results-container" id="resultsContainer" style="display: none;">
+                        <div class="results-header">
+                            <h2 id="resultsTitle">推薦食譜</h2>
+                            <p id="resultsSummary">已為您找到 X 個食譜</p>
+                        </div>
+
+                        <!-- 完全匹配食譜 -->
+                        <section class="recipe-section" id="perfectMatchSection" style="display: none;">
+                            <div class="section-header">
+                                <h3>✅ 完全匹配</h3>
+                                <span class="section-count" id="perfectMatchCount">(0)</span>
+                            </div>
+                            <div class="recipe-list" id="perfectMatchList">
+                                <!-- 動態生成 -->
+                            </div>
+                        </section>
+
+                        <!-- 部分匹配食譜 -->
+                        <section class="recipe-section" id="partialMatchSection" style="display: none;">
+                            <div class="section-header">
+                                <h3>🟡 部分匹配</h3>
+                                <span class="section-count" id="partialMatchCount">(0)</span>
+                            </div>
+                            <div class="recipe-list" id="partialMatchList">
+                                <!-- 動態生成 -->
+                            </div>
+                        </section>
+
+                        <!-- 無匹配結果 -->
+                        <div class="results-empty" id="noResultsState" style="display: none;">
+                            <div class="empty-icon">😢</div>
+                            <h3>沒有找到匹配的食譜</h3>
+                            <p>嘗試選擇不同的食材或查看更多食譜建議</p>
+                            <a href="recipes.html" class="btn btn-outline">瀏覽所有食譜</a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <!-- 食譜詳細模態框 -->
+        <div class="recipe-modal" id="recipeModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-body" id="modalBody">
+                    <!-- 動態生成 -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>食材配方</h4>
+                    <ul>
+                        <li><a href="../../index.html">首頁</a></li>
+                        <li><a href="recipes.html">所有食譜</a></li>
+                        <li><a href="matcher.html">食材配對</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>使用指南</h4>
+                    <ul>
+                        <li><a href="#">如何開始</a></li>
+                        <li><a href="#">新增食譜</a></li>
+                        <li><a href="#">常見問題</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>相關資訊</h4>
+                    <ul>
+                        <li><a href="#">關於我們</a></li>
+                        <li><a href="#">聯繫我們</a></li>
+                        <li><a href="#">隱私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 食材配方系統。所有權利保留。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../src/js/matcher.js"></script>
+</body>
+</html>

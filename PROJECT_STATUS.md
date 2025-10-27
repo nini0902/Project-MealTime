@@ -31,7 +31,7 @@
 - ✅ 更新後的 MVP Phase 1 (包含食譜管理)
 - ✅ 風險分析和時程規劃
 
-**檔案位置**: `c:\Users\jyang\Recipe_create\PRD.md`
+**檔案位置**: `c:\Users\jyang\Recipe_suggestion\PRD.md`
 
 ### 2. AGENTS.md (已補充食譜管理實現細節)
 - ✅ 完整的專案總覽和決策記錄
@@ -57,32 +57,123 @@
 - ✅ 給下一位 AI Agent 的詳細指引
 - ✅ 項目時間軸
 
-**檔案位置**: `c:\Users\jyang\Recipe_create\AGENTS.md`
+**檔案位置**: `c:\Users\jyang\Recipe_suggestion\AGENTS.md`
+
+### 3. 🆕 網頁雛形完成 (v1.0)
+**日期**: 2025-10-27  
+**色調**: 莫蘭迪風格（暖色 + 綠色）
+
+#### 已完成的頁面和功能：
+- ✅ **首頁** (`index.html`)
+  - 英雄區段展示
+  - 6 個核心功能卡片
+  - 8 步使用流程
+  - 快速開始區域
+  
+- ✅ **食材配對頁** (`src/pages/matcher.html`)
+  - 左側食材選擇面板（7 大分類）
+  - 食材搜尋功能
+  - 智能匹配演算法（100% + 50-99%）
+  - 完全匹配和部分匹配結果分類
+  - 食譜詳細資訊模態框
+  - 匹配度百分比顯示
+
+- ✅ **食譜列表頁** (`src/pages/recipes.html`)
+  - 所有食譜瀏覽（6 個示例）
+  - 名稱搜尋功能
+  - 分類篩選
+  - 難度篩選
+  - 卡片式食譜展示
+
+- ✅ **新增食譜頁** (`src/pages/add-recipe.html`)
+  - 4 段表單（基本資訊、烹飪資訊、食材、步驟）
+  - 動態添加/刪除食材
+  - 動態添加/刪除步驟
+  - 前端表單驗證
+  - localStorage 儲存
+
+#### 技術實現：
+- ✅ **CSS 系統** (`src/css/`)
+  - `theme.css` - 莫蘭迪色調主題（6 個顏色變數組）
+  - `layout.css` - 響應式布局系統
+  - `index.css` - 首頁樣式
+  - `matcher.css` - 配對頁樣式
+  - `recipes.css` - 食譜列表樣式
+  - `add-recipe.css` - 新增食譜表單樣式
+
+- ✅ **JavaScript 邏輯** (`src/js/`)
+  - `main.js` - 主程式入口
+  - `matcher.js` - 配對演算法和 UI 交互
+  - `recipes.js` - 列表篩選和搜尋
+  - `add-recipe.js` - 表單驗證和管理
+
+#### 色彩設計：
+- **暖色系** - 主色 (#C99570 暖土棕)
+- **綠色系** - 輔助色 (#6B8E6F 莫蘭迪綠)
+- **中立色** - 背景 (#FEFBF7 奶白色)
+- 漸變效果用於導航欄和特殊區域
+
+**檔案位置**: `c:\Users\jyang\Recipe_suggestion\`
 
 ---
 
 ## 🎯 當前階段
 
-**階段**: 規劃階段 (Plan Mode)  
-**狀態**: 準備轉向技術選型
+**階段**: 網頁雛形完成，可進行前端測試  
+**狀態**: 前端開發完成 ✅ | 後端待開發 ⏳
+
+### 網頁雛形現已完成
+```
+✅ 首頁 (index.html)
+✅ 食材配對頁 (src/pages/matcher.html)
+✅ 食譜列表頁 (src/pages/recipes.html)
+✅ 新增食譜頁 (src/pages/add-recipe.html)
+✅ 莫蘭迪色調設計系統
+✅ 響應式布局 (桌面、平板、手機)
+✅ 前端邏輯實現
+```
+
+### 測試方式
+
+#### 快速開始（3 種方法）：
+
+**方法 1：VS Code Live Server（推薦）**
+```
+1. 安裝 Live Server 擴展
+2. 右鍵點擊 index.html
+3. 選擇「Open with Live Server」
+```
+
+**方法 2：Node.js HTTP Server**
+```bash
+npm install -g http-server
+http-server
+# 訪問 http://localhost:8080
+```
+
+**方法 3：直接打開文件**
+- Windows 資源管理器中雙擊 index.html
 
 ### 何時進行下一步?
 
-當你準備好確定以下內容時，可以進入「技術選型」階段：
+當前端雛形測試完成後，可以進入：
 
-```
-需要決定的技術選項：
-□ 前端框架: React / Vue / Angular / 原生 HTML-CSS-JS
-□ 後端語言: Python / Node.js / Java / C#
-□ 資料庫: PostgreSQL / MySQL / MongoDB / SQLite
-□ 部署方式: Web App / Desktop App / 混合
-```
+1. **後端開發**
+   - API 端點實現
+   - 資料庫設計（SQLite / PostgreSQL / MongoDB）
+   - 用戶認證系統（可選）
 
-確定技術後，AI Agent 會幫助你：
-- 📐 建立 ARCHITECTURE.md (詳細技術架構)
-- 📊 建立 DATABASE.md (完整資料庫設計)
-- 🔌 建立 API.md (實現細節 API 設計)
-- 🛠️ 初始化項目結構和測試框架
+2. **功能增強**
+   - 編輯食譜功能
+   - 刪除食譜功能（含確認對話框）
+   - 收藏功能
+   - 進階搜尋
+
+3. **優化改進**
+   - 性能優化
+   - SEO 優化
+   - 無障礙設計（A11y）
+   - 國際化支持
 
 ---
 

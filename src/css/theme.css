@@ -1,0 +1,364 @@
+/* ============================================
+   莫蘭迪色調主題 - 暖色 + 綠色組合
+   ============================================ */
+
+:root {
+  /* 莫蘭迪色調 - 暖色系列 */
+  --color-warm-primary: #C99570;      /* 暖土棕 - 主色調 */
+  --color-warm-light: #E8D4C4;        /* 淡米色 - 輔助背景 */
+  --color-warm-accent: #D4A574;       /* 焦糖棕 - 強調色 */
+  
+  /* 莫蘭迪色調 - 綠色系列 */
+  --color-green-primary: #A4B870;     /* 暖黃綠 - 主綠色 */
+  --color-green-light: #C4D880;       /* 淡黃綠 - 輔助綠 */
+  --color-green-accent: #8BA55F;      /* 深黃綠 - 強調綠 */
+  
+  /* 中立色 */
+  --color-bg-primary: #FEFBF7;        /* 奶白色 - 主背景 */
+  --color-bg-secondary: #F5EFE9;      /* 淡米色 - 副背景 */
+  --color-text-primary: #3D3D3D;      /* 深灰 - 主文字 */
+  --color-text-secondary: #8B8B8B;    /* 中灰 - 副文字 */
+  --color-border: #DDD0C8;            /* 邊框色 - 淡米色系 */
+  
+  /* 狀態色 */
+  --color-success: #A4B870;           /* 成功 - 暖黃綠 */
+  --color-warning: #D4A574;           /* 警告 - 焦糖棕 */
+  --color-error: #A87070;             /* 錯誤 - 莫蘭迪紅 */
+  --color-info: #8BA55F;              /* 資訊 - 深黃綠 */
+  
+  /* 間距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* 圓角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* 陰影 */
+  --shadow-sm: 0 1px 2px rgba(61, 61, 61, 0.08);
+  --shadow-md: 0 4px 8px rgba(61, 61, 61, 0.12);
+  --shadow-lg: 0 12px 24px rgba(61, 61, 61, 0.15);
+  
+  /* 過渡 */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* ============================================
+   全局樣式
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================
+   排版樣式
+   ============================================ */
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-warm-primary);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-warm-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   按鈕樣式
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* 主要按鈕 - 暖色 */
+.btn-primary {
+  background-color: var(--color-warm-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-warm-accent);
+}
+
+/* 次要按鈕 - 綠色 */
+.btn-secondary {
+  background-color: var(--color-green-primary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-green-accent);
+}
+
+/* 輔助按鈕 - 透明 */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-warm-primary);
+  border: 2px solid var(--color-warm-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-warm-light);
+}
+
+/* 危險按鈕 */
+.btn-danger {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.btn-danger:hover {
+  opacity: 0.8;
+}
+
+/* 按鈕尺寸 */
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.125rem;
+}
+
+/* ============================================
+   卡片樣式
+   ============================================ */
+
+.card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-color: var(--color-warm-primary);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-warm-primary);
+}
+
+.card-body {
+  margin-bottom: var(--spacing-md);
+}
+
+.card-footer {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ============================================
+   輸入表單樣式
+   ============================================ */
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.95rem;
+}
+
+.form-required::after {
+  content: ' *';
+  color: var(--color-error);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  background-color: white;
+  color: var(--color-text-primary);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-warm-primary);
+  box-shadow: 0 0 0 3px rgba(201, 149, 112, 0.1);
+  background-color: rgba(248, 243, 239, 0.5);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* 表單錯誤 */
+.form-error {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(168, 112, 112, 0.1) !important;
+}
+
+.form-error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* ============================================
+   標籤 & 徽章
+   ============================================ */
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-primary {
+  background-color: rgba(201, 149, 112, 0.2);
+  color: var(--color-warm-primary);
+}
+
+.badge-green {
+  background-color: rgba(107, 142, 111, 0.2);
+  color: var(--color-green-primary);
+}
+
+.badge-success {
+  background-color: rgba(107, 142, 111, 0.2);
+  color: var(--color-green-primary);
+}
+
+.badge-warning {
+  background-color: rgba(212, 165, 116, 0.2);
+  color: var(--color-warning);
+}
+
+.badge-error {
+  background-color: rgba(168, 112, 112, 0.2);
+  color: var(--color-error);
+}
+
+/* ============================================
+   分割線 & 間隔
+   ============================================ */
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-lg) 0;
+}
+
+.spacer-xs { height: var(--spacing-xs); }
+.spacer-sm { height: var(--spacing-sm); }
+.spacer-md { height: var(--spacing-md); }
+.spacer-lg { height: var(--spacing-lg); }
+.spacer-xl { height: var(--spacing-xl); }
