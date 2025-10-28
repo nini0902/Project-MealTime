@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>食材配對 - 食材配方系統</title>
+    <title>食材配對 - 食光計畫</title>
     <link rel="stylesheet" href="../../src/css/theme.css">
     <link rel="stylesheet" href="../../src/css/layout.css">
     <link rel="stylesheet" href="../../src/css/matcher.css">
@@ -39,95 +39,73 @@
 
         <!-- 主要內容 -->
         <section class="container">
-            <div class="matcher-layout">
-                <!-- 左側：食材選擇面板 -->
-                <aside class="ingredient-panel">
-                    <div class="panel-header">
-                        <h3>🥬 選擇食材</h3>
-                        <button class="btn btn-sm btn-outline" id="clearAllBtn">清空全部</button>
+            <!-- 食材選擇區域 -->
+            <div class="ingredient-selector-section">
+                <!-- 搜尋欄 -->
+                <div class="selector-search">
+                    <input 
+                        type="text" 
+                        id="ingredientSearch" 
+                        placeholder="🔍 搜尋食材..."
+                        class="ingredient-search-input"
+                    >
+                    <button class="btn btn-sm btn-outline" id="clearAllBtn">清空全部</button>
+                </div>
+
+                <!-- 食材分類選擇 -->
+                <div class="ingredient-categories-grid" id="ingredientCategories">
+                    <!-- 動態生成 -->
+                </div>
+
+                <!-- 已選擇食材區域 -->
+                <div class="selected-ingredients-section">
+                    <div class="selected-header">
+                        <h3>已選擇食材</h3>
+                        <span class="selected-badge" id="selectedCount">0</span>
+                    </div>
+                    <div class="selected-ingredients-display" id="selectedIngredientsDisplay">
+                        <p class="empty-message">還沒選擇食材</p>
+                    </div>
+                </div>
+
+                <!-- 搜尋按鈕 -->
+                <button class="btn btn-primary btn-lg btn-block" id="searchRecipesBtn">
+                    🔍 搜尋食譜
+                </button>
+            </div>
+
+            <!-- 結果面板 -->
+            <div class="results-panel">
+                <!-- 初始狀態 -->
+                <div class="results-empty" id="emptyState">
+                    <div class="empty-icon">🍳</div>
+                    <h3>開始選擇食材</h3>
+                    <p>選擇您家中現有的食材，系統會為您推薦相應的食譜</p>
+                </div>
+
+                <!-- 搜尋結果 -->
+                <div class="results-container" id="resultsContainer" style="display: none;">
+                    <div class="results-header">
+                        <h2 id="resultsTitle">推薦食譜</h2>
+                        <p id="resultsSummary">已為您找到 X 個食譜</p>
                     </div>
 
-                    <div class="ingredient-search">
-                        <input 
-                            type="text" 
-                            id="ingredientSearch" 
-                            placeholder="搜尋食材..."
-                            class="ingredient-search-input"
-                        >
-                    </div>
-
-                    <div class="ingredient-categories" id="ingredientCategories">
+                    <!-- 推薦食譜列表 -->
+                    <div class="recipe-list" id="resultsList">
                         <!-- 動態生成 -->
                     </div>
 
-                    <div class="selected-count">
-                        已選擇 <strong id="selectedCount">0</strong> 種食材
+                    <!-- 無匹配結果 -->
+                    <div class="results-empty" id="noResultsState" style="display: none;">
+                        <div class="empty-icon">😢</div>
+                        <h3>沒有找到匹配的食譜</h3>
+                        <p>嘗試選擇不同的食材或查看更多食譜建議</p>
+                        <a href="recipes.html" class="btn btn-outline">瀏覽所有食譜</a>
                     </div>
-
-                    <button class="btn btn-primary btn-block" id="searchRecipesBtn">
-                        搜尋食譜
-                    </button>
-                </aside>
-
-                <!-- 右側：結果面板 -->
-                <main class="results-panel">
-                    <!-- 初始狀態 -->
-                    <div class="results-empty" id="emptyState">
-                        <div class="empty-icon">🔍</div>
-                        <h3>還沒有選擇食材</h3>
-                        <p>請在左側選擇您家中現有的食材，然後點擊「搜尋食譜」按鈕</p>
-                    </div>
-
-                    <!-- 搜尋結果 -->
-                    <div class="results-container" id="resultsContainer" style="display: none;">
-                        <div class="results-header">
-                            <h2 id="resultsTitle">推薦食譜</h2>
-                            <p id="resultsSummary">已為您找到 X 個食譜</p>
-                        </div>
-
-                        <!-- 完全匹配食譜 -->
-                        <section class="recipe-section" id="perfectMatchSection" style="display: none;">
-                            <div class="section-header">
-                                <h3>✅ 完全匹配</h3>
-                                <span class="section-count" id="perfectMatchCount">(0)</span>
-                            </div>
-                            <div class="recipe-list" id="perfectMatchList">
-                                <!-- 動態生成 -->
-                            </div>
-                        </section>
-
-                        <!-- 部分匹配食譜 -->
-                        <section class="recipe-section" id="partialMatchSection" style="display: none;">
-                            <div class="section-header">
-                                <h3>🟡 部分匹配</h3>
-                                <span class="section-count" id="partialMatchCount">(0)</span>
-                            </div>
-                            <div class="recipe-list" id="partialMatchList">
-                                <!-- 動態生成 -->
-                            </div>
-                        </section>
-
-                        <!-- 無匹配結果 -->
-                        <div class="results-empty" id="noResultsState" style="display: none;">
-                            <div class="empty-icon">😢</div>
-                            <h3>沒有找到匹配的食譜</h3>
-                            <p>嘗試選擇不同的食材或查看更多食譜建議</p>
-                            <a href="recipes.html" class="btn btn-outline">瀏覽所有食譜</a>
-                        </div>
-                    </div>
+                </div>
                 </main>
             </div>
         </section>
-
-        <!-- 食譜詳細模態框 -->
-        <div class="recipe-modal" id="recipeModal">
-            <div class="modal-content">
-                <button class="modal-close" id="modalClose">&times;</button>
-                <div class="modal-body" id="modalBody">
-                    <!-- 動態生成 -->
-                </div>
-            </div>
-        </div>
     </main>
 
     <!-- 頁腳 -->
